@@ -1,2 +1,2 @@
-# rest-services
-RESTful services for Express.js.
+# cloud-atlas
+Provides core functionality to be used with cloud applications..

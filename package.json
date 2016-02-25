@@ -1,0 +1,19 @@
+{
+  "name": "cloud-atlas",
+  "version": "0.0.1",
+  "description": "Provides core functionality to be used with cloud applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiasrask/cloud-atlas.git"
+  },
+  "author": "Tobias Rask",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tobiasrask/cloud-atlas/issues"
+  },
+  "homepage": "https://github.com/tobiasrask/cloud-atlas#readme"
+}

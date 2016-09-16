@@ -19,7 +19,17 @@ class Core extends APIObject {
   * @param apiObject
   */
   registerAPI(apiObject) {
-    this._registry(apiObject.getAPIType(), )
+    this._registry.set('api', apiObject.getType(), apiObject);
+  }
+
+  /**
+  * Returns api.
+  *
+  * @param type
+  * @return API Object or null if not exists
+  */
+  api(type) {
+    return this._registry.get('api', type, null);
   }
 }
 

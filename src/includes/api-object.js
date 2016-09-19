@@ -37,6 +37,16 @@ class APIObject {
   }
 
   /**
+  * Set property.
+  *
+  * @param key
+  * @param value
+  */
+  setProperty(key, value) {
+    this._registry.set('properties', key, value);
+  }
+
+  /**
   * Returns properties.
   *
   * @return properties.
@@ -53,7 +63,7 @@ class APIObject {
   * @return property value or default, if property doesn't exists.
   */
   getProperty(key, defaultValue) {
-    return registry.get('properties', key, defaultValue);
+    return this._registry.get('properties', key, defaultValue);
   }
 }
 

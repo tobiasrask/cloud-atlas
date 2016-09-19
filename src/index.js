@@ -16,4 +16,7 @@ export { _moduleAPI as moduleAPI };
 import _module from './module-api/module';
 export { _module as Module };
 
+import _moduleHandler from './module-api/module-handler';
+export { _moduleHandler as ModuleHandler };
+
 export default _system;

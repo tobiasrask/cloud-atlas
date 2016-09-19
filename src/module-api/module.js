@@ -46,6 +46,30 @@ class Module extends APIObject {
   getName() {
     return this.getProperty('name');
   }
+
+  /**
+  * Register module handler. This method creates new instanece.
+  *
+  * @param name
+  * @param handler
+  *   Handler class
+  * @param attributes
+  */
+  registerHandler(name, handlerClass, attributes = {}) {
+    if (!attributes.hasOwnProperty('name'))
+      attributes.name = name;
+    let handler = new handlerClass(attributes);
+    this._registry.set('handlers', name, handler);
+  }
+
+  /**
+  * Get module by name.
+  *
+  * @param name
+  */
+  getHandler(name) {
+    return this._registry.get('handlers', name, null);
+  }
 }
 
 export default Module;

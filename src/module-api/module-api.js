@@ -9,7 +9,6 @@ class ModuleAPI extends APIObject {
   *   modules path, defaults to /src/modules.
   */
   init(params = {}) {
-    this._modules = new Map;
     if (!params.hasOwnProperty('modulesPath'))
       params.modulesPath = `${ process.cwd() }/src/modules/`;
     this.setModulesPath(params.modulesPath);
@@ -44,11 +43,13 @@ class ModuleAPI extends APIObject {
   *
   * @param name
   * @param module
+  * @param attributes
   */
-  register(name, moduleClass) {
-    let module = new moduleClass({ name: name });
-
-    this._modules.set(name, module);
+  register(name, moduleClass, attributes = {}) {
+    if (!attributes.hasOwnProperty('name'))
+      attributes.name = name;
+    let module = new moduleClass(attributes);
+    this._registry.set('modules', name, module);
   }
 
   /**
@@ -57,7 +58,7 @@ class ModuleAPI extends APIObject {
   * @param name
   */
   get(name) {
-    return this._modules.get(name);
+    return this._registry.get('modules', name, null);
   }
 }
 

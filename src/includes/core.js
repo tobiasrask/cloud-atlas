@@ -47,7 +47,7 @@ class Core extends APIObject {
     if (logger == null)
       return false;
 
-    logger.log.apply(this, arguments);
+    logger.log.apply(logger, arguments);
     return true;
   }
 }

@@ -31,6 +31,25 @@ class Core extends APIObject {
   api(type) {
     return this._registry.get('api', type, null);
   }
+
+  /**
+  * Generic logging method. Application should extend LoggerAPI and register it
+  * to handle event flow.
+  *
+  * @param args
+  *   Arguments will be passed to logger.
+  * @return boolean succeed
+  *   Method returns boolean value to indicate if log exists.
+  */
+  log(args) {
+    let logger = this.api('log');
+
+    if (logger == null)
+      return false;
+
+    logger.log.apply(this, arguments);
+    return true;
+  }
 }
 
 const core = new Core({ type: 'system' });

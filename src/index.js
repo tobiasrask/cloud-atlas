@@ -7,6 +7,9 @@ export { _APIObject as APIObject };
 import _system from './system';
 export { _system as system };
 
+import _LoggerAPI from './utils/logger';
+export { _LoggerAPI as LoggerAPI };
+
 /**
 * Module API.
 */
@@ -18,5 +21,6 @@ export { _module as Module };
 
 import _moduleHandler from './module-api/module-handler';
 export { _moduleHandler as ModuleHandler };
+
 
 export default _system;

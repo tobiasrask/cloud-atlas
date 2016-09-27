@@ -1,3 +1,6 @@
+import DomainMap from "domain-map"
+import APIObject from './api-object'
+
 /**
 * Base class for Application.
 */
@@ -14,22 +17,18 @@ class Application extends APIObject {
   }
 
   /**
-  * Initialize application.
+  * Initialize and run application.
   */
   init() {
+    process.on('uncaughtException', (err) => {
+      this.applicationWillTerminate(err);
+    });
+    process.on('exit', () => {
+      this.applicationWillExit();
+    });
     this.bootstrap()
     .then(() => {
-      return this.run();
-    })
-    .then(() => {
-      return this.shutdown();
-    })
-    .then(() => {
-      process.exit();
-    })
-    .catch((err) => {
-      // Log error
-      process.exit(1);
+      this.run();
     });
   }
 
@@ -45,14 +44,27 @@ class Application extends APIObject {
   }
 
   /**
-  * Shutdown application.
-  *
-  * @return promise
+  * Exit application.
   */
-  shutdown() {
-    return new Promise((resolve, reject) => {
-      resolve();
-    });
+  exit() {
+    process.exit();
+  }
+
+  /**
+  * Application will exit.
+  *
+  */
+  applicationWillExit() {
+
+  }
+
+  /**
+  * React before exiting because of error.
+  *
+  * @param err
+  */
+  applicationWillTerminate(err) {
+
   }
 
   /**
@@ -61,10 +73,8 @@ class Application extends APIObject {
   * @return promise
   */
   run() {
-    return new Promise((resolve, reject) => {
-      resolve();
-    });
+
   }
 }
 
-export default APIObject;
+export default Application;

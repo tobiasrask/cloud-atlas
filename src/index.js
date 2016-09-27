@@ -22,5 +22,10 @@ export { _module as Module };
 import _moduleHandler from './module-api/module-handler';
 export { _moduleHandler as ModuleHandler };
 
+/**
+* Application
+*/
+import _Application from './includes/application';
+export { _Application as Application };
 
 export default _system;

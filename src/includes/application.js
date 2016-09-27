@@ -26,9 +26,33 @@ class Application extends APIObject {
     process.on('exit', () => {
       this.applicationWillExit();
     });
-    this.bootstrap()
+  }
+
+  /**
+  * Start application. Application will bootstrap with given bootstrap level.
+  *
+  * @param params
+  *   bootstrapLevel
+  * @return promise
+  */
+  start(params = {}) {
+    return this.applicationWillBootsrap()
+    .then (() => {
+      return this.bootstrap();
+    })
     .then(() => {
-      this.run();
+      return this.run();
+    });
+  }
+
+  /**
+  * Hook will trigger before application bootstrap.
+  *
+  * @return promise
+  */
+  applicationWillBootsrap() {
+    return new Promise((resolve, reject) => {
+      resolve();
     });
   }
 
@@ -42,6 +66,18 @@ class Application extends APIObject {
       resolve();
     });
   }
+
+  /**
+  * Run application.
+  *
+  * @return promise
+  */
+  run() {
+    return new Promise((resolve, reject) => {
+      resolve();
+    });
+  }
+
 
   /**
   * Exit application.
@@ -64,15 +100,6 @@ class Application extends APIObject {
   * @param err
   */
   applicationWillTerminate(err) {
-
-  }
-
-  /**
-  * Run application.
-  *
-  * @return promise
-  */
-  run() {
 
   }
 }

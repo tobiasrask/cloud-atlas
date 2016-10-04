@@ -42,6 +42,11 @@ class Application extends APIObject {
     })
     .then(() => {
       return this.run();
+    })
+    .then(resp => {
+    });
+    .catch(err => {
+      console.log(err);
     });
   }
 

@@ -5,6 +5,12 @@ import APIObject from "./../includes/api-object"
 */
 class LoggerAPI extends APIObject {
 
+  constructor(params = {}) {
+    if (!params.hasOwnProperty('type'))
+      params.type = 'log';
+    super(params);
+  }
+
   /**
   * Hook log allows other API's and modules to log events.
   *

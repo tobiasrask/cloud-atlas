@@ -17,6 +17,10 @@ class APIObject {
       throw new Error("API type not defined.");
 
     this._registry.set('properties', 'type', params.type)
+
+    let debug = options.hasOwnProperty('debug') ? options.debug : false;
+    this._registry.set('properties', 'debug', debug)
+
     this.init();
   }
 

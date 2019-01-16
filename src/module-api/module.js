@@ -1,4 +1,4 @@
-import APIObject from "./../includes/api-object"
+import APIObject from './../includes/api-object'
 
 /**
 * Module API.
@@ -8,20 +8,22 @@ class Module extends APIObject {
   /**
   * Construct module.
   *
-  * @param attributes
+  * @param attributes
   *   name
   *     Module name.
   */
-  constructor(attributes = {}) {
-    if (!attributes.hasOwnProperty('type'))
-      attributes.type = 'module';
+  constructor(params = {}) {
+    if (!params.hasOwnProperty('type')) {
+      params.type = 'module'
+    }
 
-    if (!attributes.hasOwnProperty('name'))
-      throw new Error("Module name not defiend.");
+    if (!params.hasOwnProperty('name')) {
+      throw new Error('Module name not defiend.')
+    }
 
-    super(attributes);
+    super(params)
 
-    this.setProperty('name', attributes.name);
+    this.setProperty('name', params.name)
   }
 
   /**
@@ -44,7 +46,7 @@ class Module extends APIObject {
   * @return name
   */
   getName() {
-    return this.getProperty('name');
+    return this.getProperty('name')
   }
 
   /**
@@ -56,10 +58,11 @@ class Module extends APIObject {
   * @param attributes
   */
   registerHandler(name, handlerClass, attributes = {}) {
-    if (!attributes.hasOwnProperty('name'))
-      attributes.name = name;
-    let handler = new handlerClass(attributes);
-    this._registry.set('handlers', name, handler);
+    if (!attributes.hasOwnProperty('name')) {
+      attributes.name = name
+    }
+    const handler = new handlerClass(attributes)
+    this._registry.set('handlers', name, handler)
   }
 
   /**
@@ -68,8 +71,8 @@ class Module extends APIObject {
   * @param name
   */
   getHandler(name) {
-    return this._registry.get('handlers', name, null);
+    return this._registry.get('handlers', name, null)
   }
 }
 
-export default Module;
+export default Module

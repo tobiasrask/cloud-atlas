@@ -1,4 +1,4 @@
-import APIObject from "./../includes/api-object"
+import APIObject from './../includes/api-object'
 
 /**
 * Logger API.
@@ -6,9 +6,10 @@ import APIObject from "./../includes/api-object"
 class LoggerAPI extends APIObject {
 
   constructor(params = {}) {
-    if (!params.hasOwnProperty('type'))
-      params.type = 'log';
-    super(params);
+    if (!params.hasOwnProperty('type')) {
+      params.type = 'log'
+    }
+    super(params)
   }
 
   /**
@@ -17,9 +18,9 @@ class LoggerAPI extends APIObject {
   * @param params
   *   Application should define it own params
   */
-  log(args) {
+  log(_args) {
 
   }
 }
 
-export default LoggerAPI;
+export default LoggerAPI

@@ -1,4 +1,4 @@
-import APIObject from "./../includes/api-object"
+import APIObject from './../includes/api-object'
 
 class ModuleAPI extends APIObject {
 
@@ -9,19 +9,20 @@ class ModuleAPI extends APIObject {
   *   modules path, defaults to /src/modules.
   */
   init(params = {}) {
-    if (!params.hasOwnProperty('modulesPath'))
-      params.modulesPath = `${ process.cwd() }/src/modules/`;
-    this.setModulesPath(params.modulesPath);
+    if (!params.hasOwnProperty('modulesPath')) {
+      params.modulesPath = `${process.cwd()}/src/modules/`
+    }
+    this.setModulesPath(params.modulesPath)
   }
 
   /**
   * Set path for modules.
   *
-  * @param path
+  * @param path
   *   Path relative to app-root.
   */
   setModulesPath(path) {
-    this.setProperty('modulesPath', path);
+    this.setProperty('modulesPath', path)
   }
 
   /**
@@ -31,11 +32,11 @@ class ModuleAPI extends APIObject {
   *   Array of module list
   */
   loadModules(list) {
-    let path = this.getProperty('modulesPath');
+    const path = this.getProperty('modulesPath')
     list.forEach((item) => {
-      let moduleClass = require(path + item.src);
-      this.register(item.name, moduleClass.default);
-    });
+      const moduleClass = require(path + item.src)
+      this.register(item.name, moduleClass.default)
+    })
   }
 
   /**
@@ -46,10 +47,11 @@ class ModuleAPI extends APIObject {
   * @param attributes
   */
   register(name, moduleClass, attributes = {}) {
-    if (!attributes.hasOwnProperty('name'))
-      attributes.name = name;
-    let module = new moduleClass(attributes);
-    this._registry.set('modules', name, module);
+    if (!attributes.hasOwnProperty('name')) {
+      attributes.name = name
+    }
+    const module = new moduleClass(attributes)
+    this._registry.set('modules', name, module)
   }
 
   /**
@@ -58,9 +60,9 @@ class ModuleAPI extends APIObject {
   * @param name
   */
   get(name) {
-    return this._registry.get('modules', name, null);
+    return this._registry.get('modules', name, null)
   }
 }
 
-const moduleAPI = new ModuleAPI({ type: 'module_api' });
-export default moduleAPI;
+const moduleAPI = new ModuleAPI({ type: 'module_api' })
+export default moduleAPI

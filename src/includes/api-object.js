@@ -1,4 +1,4 @@
-import DomainMap from "domain-map"
+import DomainMap from 'domain-map'
 
 /**
 * Base class for all API objects.
@@ -8,20 +8,21 @@ class APIObject {
   /**
   * Construct API.
   *
-  * @params
+  * @params
   */
   constructor(params = {}) {
-    this._registry = new DomainMap();
+    this._registry = new DomainMap()
 
-    if (!params.hasOwnProperty('type'))
-      throw new Error("API type not defined.");
+    if (!params.hasOwnProperty('type')) {
+      throw new Error('API type not defined.')
+    }
 
     this._registry.set('properties', 'type', params.type)
 
-    let debug = options.hasOwnProperty('debug') ? options.debug : false;
+    let debug = params.hasOwnProperty('debug') ? params.debug : false
     this._registry.set('properties', 'debug', debug)
 
-    this.init();
+    this.init()
   }
 
   /**
@@ -34,7 +35,7 @@ class APIObject {
   /**
   * Returns API type.
   *
-  * @return api type
+  * @return api type
   */
   getType() {
     return this._registry.get('properties', 'type')
@@ -47,7 +48,7 @@ class APIObject {
   * @param value
   */
   setProperty(key, value) {
-    this._registry.set('properties', key, value);
+    this._registry.set('properties', key, value)
   }
 
   /**
@@ -56,7 +57,7 @@ class APIObject {
   * @return properties.
   */
   getProperties() {
-    return this._registry.get('properties');
+    return this._registry.get('properties')
   }
 
   /**
@@ -67,8 +68,8 @@ class APIObject {
   * @return property value or default, if property doesn't exists.
   */
   getProperty(key, defaultValue) {
-    return this._registry.get('properties', key, defaultValue);
+    return this._registry.get('properties', key, defaultValue)
   }
 }
 
-export default APIObject;
+export default APIObject

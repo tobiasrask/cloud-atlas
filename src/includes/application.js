@@ -1,4 +1,3 @@
-import DomainMap from "domain-map"
 import APIObject from './api-object'
 
 /**
@@ -9,11 +8,11 @@ class Application extends APIObject {
   /**
   * Construct API.
   *
-  * @params
+  * @params
   */
   constructor(params = {}) {
-    params.type = 'application';
-    super(params);
+    params.type = 'application'
+    super(params)
   }
 
   /**
@@ -21,11 +20,11 @@ class Application extends APIObject {
   */
   init() {
     process.on('uncaughtException', (err) => {
-      this.applicationWillTerminate(err);
-    });
+      this.applicationWillTerminate(err)
+    })
     process.on('exit', () => {
-      this.applicationWillExit();
-    });
+      this.applicationWillExit()
+    })
   }
 
   /**
@@ -35,14 +34,14 @@ class Application extends APIObject {
   *   bootstrapLevel
   * @return promise
   */
-  start(params = {}) {
+  start(_params = {}) {
     return this.applicationWillBootsrap()
-    .then (() => {
-      return this.bootstrap();
-    })
-    .then(() => {
-      return this.run();
-    });
+      .then(() => {
+        return this.bootstrap()
+      })
+      .then(() => {
+        return this.run()
+      })
   }
 
   /**
@@ -51,9 +50,9 @@ class Application extends APIObject {
   * @return promise
   */
   applicationWillBootsrap() {
-    return new Promise((resolve, reject) => {
-      resolve();
-    });
+    return new Promise((resolve, _reject) => {
+      resolve()
+    })
   }
 
   /**
@@ -62,9 +61,9 @@ class Application extends APIObject {
   * @return promise
   */
   bootstrap() {
-    return new Promise((resolve, reject) => {
-      resolve();
-    });
+    return new Promise((resolve, _reject) => {
+      resolve()
+    })
   }
 
   /**
@@ -73,9 +72,9 @@ class Application extends APIObject {
   * @return promise
   */
   run() {
-    return new Promise((resolve, reject) => {
-      resolve();
-    });
+    return new Promise((resolve, _reject) => {
+      resolve()
+    })
   }
 
 
@@ -83,7 +82,7 @@ class Application extends APIObject {
   * Exit application.
   */
   exit() {
-    process.exit();
+    process.exit()
   }
 
   /**
@@ -99,9 +98,9 @@ class Application extends APIObject {
   *
   * @param err
   */
-  applicationWillTerminate(err) {
+  applicationWillTerminate(_err) {
 
   }
 }
 
-export default Application;
+export default Application

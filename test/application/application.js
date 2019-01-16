@@ -1,18 +1,18 @@
-import assert from "assert"
-import system, { Application } from "./../../src/index"
+import { Application } from './../../src/index'
 
 describe('Appliction', () => {
 
   describe('Creating application', () => {
     it('Should build without errors', (done) => {
 
-      let application = new Application();
-      if (application.getType() != 'application')
-        return done(new Error("Application type doesn't match"));
+      let application = new Application()
+      if (application.getType() != 'application') {
+        return done(new Error('Application type doesn\'t match'))
+      }
 
-      done();
+      done()
     })
-  });
+  })
 
 
   describe('Implementing application', () => {
@@ -26,28 +26,28 @@ describe('Appliction', () => {
         * @return promise
         */
         applicationWillBootsrap() {
-          return new Promise((resolve, reject) => {
-            this.setProperty('beforeBootstrapExecuted', true);
-            resolve();
-          });
+          return new Promise((resolve, _reject) => {
+            this.setProperty('beforeBootstrapExecuted', true)
+            resolve()
+          })
         }
 
         /**
         * Implementation of hook bootsrap.
         */
         bootstrap() {
-          if (this.getProperty('beforeBootstrapExecuted', false))
-            this.setProperty('bootsrapped', true);
-
-          return new Promise((resolve, reject) => { resolve() });
+          if (this.getProperty('beforeBootstrapExecuted', false)) {
+            this.setProperty('bootsrapped', true)
+          }
+          return Promise.resolve()
         }
 
         /**
         * Implementation of hook run.
         */
         run() {
-          this.setProperty('run', true);
-          return new Promise((resolve, reject) => { resolve() });
+          this.setProperty('run', true)
+          return Promise.resolve()
         }
 
         /**
@@ -56,7 +56,7 @@ describe('Appliction', () => {
         * @return boolean status
         */
         didBootstrap() {
-          return this.getProperty('bootsrapped', false);
+          return this.getProperty('bootsrapped', false)
         }
 
         /**
@@ -65,24 +65,27 @@ describe('Appliction', () => {
         * @return boolean status
         */
         didRun() {
-          return this.getProperty('run', false);
+          return this.getProperty('run', false)
         }
       }
 
-      let application = new MyApp();
+      let application = new MyApp()
 
       application.start()
-      .then(() => {
-        if (application.getType() != 'application')
-          return done(new Error("Application type doesn't match"));
+        .then(() => {
+          if (application.getType() != 'application') {
+            return done(new Error('Application type doesn\'t match'))
+          }
 
-        if (!application.didBootstrap())
-          return done(new Error("Application didn't bootsrapped correctly"));
+          if (!application.didBootstrap()) {
+            return done(new Error('Application didn\'t bootsrapped correctly'))
+          }
 
-        if (!application.didRun())
-          return done(new Error("Application didn't run correctly"));
-        done();
-      });
+          if (!application.didRun()) {
+            return done(new Error('Application didn\'t run correctly'))
+          }
+          done()
+        })
     })
-  });
-});
+  })
+})

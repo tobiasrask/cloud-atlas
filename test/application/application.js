@@ -69,7 +69,7 @@ describe('Appliction', () => {
         }
       }
 
-      let application = new MyApp()
+      const application = new MyApp()
 
       application.start()
         .then(() => {

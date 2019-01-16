@@ -44,13 +44,13 @@ class ModuleAPI extends APIObject {
   *
   * @param name
   * @param module
-  * @param attributes
+  * @param params
   */
-  register(name, moduleClass, attributes = {}) {
-    if (!attributes.hasOwnProperty('name')) {
-      attributes.name = name
+  register(name, moduleClass, params = {}) {
+    if (!params.hasOwnProperty('name')) {
+      params.name = name
     }
-    const module = new moduleClass(attributes)
+    const module = new moduleClass(params)
     this._registry.set('modules', name, module)
   }
 

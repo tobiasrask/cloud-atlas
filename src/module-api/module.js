@@ -55,13 +55,13 @@ class Module extends APIObject {
   * @param name
   * @param handler
   *   Handler class
-  * @param attributes
+  * @param params
   */
-  registerHandler(name, handlerClass, attributes = {}) {
-    if (!attributes.hasOwnProperty('name')) {
-      attributes.name = name
+  registerHandler(name, handlerClass, params = {}) {
+    if (!params.hasOwnProperty('name')) {
+      params.name = name
     }
-    const handler = new handlerClass(attributes)
+    const handler = new handlerClass(params)
     this._registry.set('handlers', name, handler)
   }
 

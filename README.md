@@ -37,13 +37,18 @@ api(name)
 Example use case
 
 ```js
-import system from 'cloud-atlas'
-system.registerAPI(new MyCustomAPI({type: }))
+import system, { Application } from 'cloud-atlas'
+
+system.registerAPI(new Application()))
+
+system.api('application').getType()
+// --> application
+
 ```
 
 ### Application
 
-Application API makes it easy to bootstrapp your application. It provides
+Application API makes it easy to bootstrap your application. It provides
 few utility callbacks to customize your startup.
 
 Application has following methods.
@@ -127,7 +132,8 @@ system.registerAPI(application)
 
 ### APIObject
 
-Extend the base API object to defined your custom APIs.
+Extend the base API object to define your own custom APIs. There are few methods
+and callbacks
 
 constructor()
   You should provide API `type` with constructor parameter. This will be used
@@ -137,6 +143,17 @@ getType()
   Method returns API type defiend when constructin API.
 
 Let's define our custom API that can be used to ping thigs.
+
+setProperty(key, value)
+  Store any property for key
+
+getProperties()
+  Returns all properties assigned to API object
+
+getProperty(key, defaultValue)
+  Returns assigned property or default value, if not set
+
+Example use case:
 
 ```js
 
@@ -220,7 +237,8 @@ remove()
 
 ### ModuleHandler
 
-Module handler is helper class for module.
+Handlers are like helper that can be assigned to single modules. Use handlers to
+separate logical sections of code.
 
 Hooks and methods
 

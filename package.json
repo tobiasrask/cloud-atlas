@@ -1,6 +1,6 @@
 {
   "name": "cloud-atlas",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "Provides core functionality to be used with cloud applications.",
   "main": "lib/index.js",
   "directories": {

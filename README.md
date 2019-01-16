@@ -14,7 +14,7 @@ Using [npm](https://www.npmjs.com/):
 
 ### Usage example
 
-Here is an example how to implement Cloud Atlas. See [example.js (https://github.com/tobiasrask/cloud-atlas/blob/master/docs/example.js)
+Here is an example how to implement Cloud Atlas. See [example.js](https://github.com/tobiasrask/cloud-atlas/blob/master/docs/example.js)
 for more examples with descriptions.
 
 Provided three core API elements are `system`, `Application` and `moduleAPI`.

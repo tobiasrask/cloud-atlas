@@ -191,6 +191,7 @@ setModulesPath(path)
 
 loadModules(list)
   Load listed modules from module path.
+  `
   Example list to load module from [modulesPath]/[src]
   [
     {
@@ -198,6 +199,7 @@ loadModules(list)
       src: 'factory/factory'
     }
   ]
+  `
 
 register(name, Module, params)
   Register new module class using params
